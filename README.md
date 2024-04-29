@@ -1,6 +1,6 @@
 # Multimodal Patient Representation Learning with Missing Modalities and Labels (ICLR 2024)
 
-Code will be released soon. Please stay tuned. Thanks!
+Detailed instructions for running the code will be added in the next few days. Please stay tuned!
 
 ## Citation
 

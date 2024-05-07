@@ -12,14 +12,7 @@ import torch
 project_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 project_name = os.path.basename(project_path)
 server_name = os.uname()[1]
-if server_name in ["sunlab-serv-01.cs.illinois.edu"]:
-    remote_root = "/srv/scratch2/zw12/"
-elif server_name in ["sunlab-serv-02.cs.illinois.edu"]:
-    remote_root = "/srv/local/zw12/"
-elif server_name in ["sunlab-serv-03.cs.illinois.edu", "sunlab-serv-04.cs.illinois.edu"]:
-    remote_root = "/srv/local/data/zw12/"
-else:
-    warnings.warn("Unknown server name, using local path")
+remote_root = "your_local_path"
 
 try:
     raw_data_path = os.path.join(remote_root, "raw_data")

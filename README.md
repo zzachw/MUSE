@@ -23,8 +23,9 @@ torch==2.0.1
 
 Follow these steps to reproduce the results:
 
-1. Obtain the eICU and MIMIC-IV datasets and place it under `{raw_data_path}`.
-2. Run the following notebooks under `src/preprocess` in the specified order to prepare the data:
+1. Edit the path in `src/utils.py` to your local path.
+2. Obtain the eICU and MIMIC-IV datasets and place it under `{raw_data_path}`.
+3. Run the following notebooks under `src/preprocess` in the specified order to prepare the data:
    1. eICU:
       1. Run `parse_eicu_remote.ipynb`
       2. Run `preprocess_eicu.py`
@@ -36,7 +37,7 @@ Follow these steps to reproduce the results:
       3. Run `build_vocab_mimic4.py`
       4. Run `data_split_mimic4.py`
    3. Run `get_code_embeddings.py`
-3. Execute `run.py` under `src/core` to train the model:
+4. Execute `run.py` under `src/core` to train the model:
    ```
    python run.py \
    --dataset [mimic4/eicu] \

@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from ffn_encoder import FFNEncoder
+from src.encoder.ffn_encoder import FFNEncoder
 from gnn import MML
 
 

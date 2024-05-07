@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from code_encoder import CodeEncoder
-from ffn_encoder import FFNEncoder
+from src.encoder.code_encoder import CodeEncoder
+from src.encoder.ffn_encoder import FFNEncoder
 from src.encoder.rnn_encoder import RNNEncoder
 from gnn import MML
 

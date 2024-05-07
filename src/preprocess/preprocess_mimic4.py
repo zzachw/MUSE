@@ -315,7 +315,7 @@ def main():
     procedures_icd_tmp_file = input_path + "/procedures_icd_tmp.csv"
     prescriptions_file = input_path + "/prescriptions_tmp.csv"
     labevents_file = input_path + "/labevents_tmp.csv"
-    discharge_file = input_path + "/discharge_tmp.csv"
+    discharge_file = input_path + "/discharge_v2_tmp.csv"
 
     hosp_adm_dict = {}
     print("Processing patient.csv")
@@ -331,10 +331,10 @@ def main():
     print("Processing labevents_tmp.csv")
     hosp_adm_dict = process_labevents(labevents_file, hosp_adm_dict)
     hosp_adm_dict = post_process_labevents(hosp_adm_dict)
-    print("Processing discharge_tmp.csv")
+    print("Processing discharge_v2_tmp.csv")
     hosp_adm_dict = process_discharge(discharge_file, hosp_adm_dict)
 
-    dump_pickle(hosp_adm_dict, os.path.join(output_path, "hosp_adm_dict.pkl"))
+    dump_pickle(hosp_adm_dict, os.path.join(output_path, "hosp_adm_dict_v2.pkl"))
 
 
 if __name__ == "__main__":

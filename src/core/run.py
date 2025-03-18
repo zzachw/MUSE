@@ -32,14 +32,16 @@ def parse_arguments(parser):
     parser.add_argument("--bert_type", type=str, default="prajjwal1/bert-tiny")
     parser.add_argument("--rnn_layers", type=int, default=1)
     parser.add_argument("--rnn_type", type=str, default="GRU")
-    parser.add_argument("--rnn_bidirectional", type=bool, default=True)
+    parser.add_argument('--rnn_bidirectional', action='store_true')
+    parser.add_argument('--no_rnn_bidirectional', dest='rnn_bidirectional', action='store_false')
+    parser.set_defaults(rnn_bidirectional=False)
     parser.add_argument("--ffn_layers", type=int, default=2)
     parser.add_argument("--gnn_layers", type=int, default=2)
     parser.add_argument("--gnn_norm", type=str, default=None)
     parser.add_argument("--dropout", type=float, default=0.25)
     parser.add_argument("--epochs", type=int, default=100)
-    parser.add_argument("--batch_size", type=int, default=256)
-    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--batch_size", type=int, default=512)
+    parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--weight_decay", type=float, default=0)
     parser.add_argument("--monitor_criterion", type=str, default="max")
     parser.add_argument("--seed", type=int, default=42)
@@ -85,6 +87,7 @@ train_loader = DataLoader(
     batch_size=args.batch_size,
     collate_fn=collate_fn,
     num_workers=4 if args.official_run else 0,
+    pin_memory=True,
     shuffle=True
 )
 val_loader = DataLoader(
@@ -92,6 +95,7 @@ val_loader = DataLoader(
     batch_size=args.batch_size,
     collate_fn=collate_fn,
     num_workers=4 if args.official_run else 0,
+    pin_memory=True,
     shuffle=False
 )
 test_loader = DataLoader(
@@ -99,6 +103,7 @@ test_loader = DataLoader(
     batch_size=args.batch_size,
     collate_fn=collate_fn,
     num_workers=4 if args.official_run else 0,
+    pin_memory=True,
     shuffle=False
 )
 

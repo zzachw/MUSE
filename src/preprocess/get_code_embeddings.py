@@ -37,9 +37,9 @@ def get_code_embeddings(loader, model, tokenizer):
     all_embeddings = []
     for i, text in tqdm(enumerate(loader)):
         with torch.no_grad():
-            text_tokenized = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=256)
+            text_tokenized = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=512)
             text_tokenized = text_tokenized.to(device)
-            embeddings = model(**text_tokenized).pooler_output
+            embeddings = model(**text_tokenized).last_hidden_state[:, 0, :]
             all_embeddings.append(embeddings.cpu())
     all_embeddings = torch.cat(all_embeddings, dim=0)
     return all_embeddings
